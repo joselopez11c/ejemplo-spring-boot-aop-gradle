@@ -2,10 +2,8 @@ package com.coderhouse.controller;
 
 import com.coderhouse.handle.ApiRestException;
 import com.coderhouse.model.Mensaje;
-import com.coderhouse.service.PersonService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +15,6 @@ import java.util.stream.Collectors;
 public class MessageController {
 
     Logger logger = LogManager.getLogger(MessageController.class);
-
-    @Autowired
-    private PersonService personService;
 
     @GetMapping("/mensajes/example")
     public String getMensajesString() {

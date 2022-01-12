@@ -14,15 +14,18 @@ public class AspectAfterExample {
 
     Logger logger = LogManager.getLogger(AspectAfterExample.class);
 
-    @Pointcut("execution(* com.coderhouse.controller.MessageController.getMensajeById(..))")
+    @Pointcut("execution(* com.coderhouse.controller." +
+            "MessageController.getMensajeById(..))")
     void alTerminarBusquedas() {}
 
-    @Pointcut("execution(* com.coderhouse.controller.*.*(..))")
+    @Pointcut("execution(* com.coderhouse" +
+            ".controller.*.*(..))")
     void alTerminarBusquedasAll() {}
 
     @After("alTerminarBusquedasAll()")
     void afterAdviceMethodAll() {
-        logger.info("Se ejecutó el after advice luego de la ejecución de cualquier método del paquete controller");
+        logger.info("Se ejecutó el after advice" +
+                " luego de la ejecución de cualquier método del paquete controller");
     }
 
     @After("alTerminarBusquedas()")
