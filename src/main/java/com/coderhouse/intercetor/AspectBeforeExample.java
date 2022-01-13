@@ -51,7 +51,8 @@ public class AspectBeforeExample {
 //    @Before("execution(* com.coderhouse.controller.*.*(..)) && " +
 //            "!execution(* com.coderhouse.controller.MessageController.getMensajeById(..))")
 //    void beforeAdviceAllPackageMethod() {
-//        logger.info("Se ejecutó el before advice antes de la ejecución de cualquier método del paquete excepto el método getMensajeById");
+//        logger.info("Se ejecutó el before advice antes de la ejecución de cualquier" +
+//                " método del paquete excepto el método getMensajeById");
 //    }
 
 //    @Before("paraBusquedasById()")
@@ -66,9 +67,9 @@ public class AspectBeforeExample {
 //        logger.info("Type: {}", type);
 //    }
 //
-//    @Before("@annotation(com.coderhouse.annotations.CustomMethodAnnotation)")
-//    void beforeAdviceAnnotationMethods(JoinPoint joinPoint) {
-//        logger.info("Se inpecciona el método {} usando una anotación personalizada", joinPoint.getSignature().getName());
-//    }
+    @Before("@annotation(com.coderhouse.annotations.CustomMethodAnnotation)")
+    void beforeAdviceAnnotationMethods(JoinPoint joinPoint) {
+        logger.info("Se inpecciona el método {} usando una anotación personalizada", joinPoint.getSignature().getName());
+    }
 
 }

@@ -3,6 +3,7 @@ package com.coderhouse.controller;
 import com.coderhouse.handle.ApiRestException;
 import com.coderhouse.model.Mensaje;
 import com.coderhouse.model.examples.ExampleClassForMethodAnnotation;
+import com.coderhouse.service.MessageService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,12 @@ public class MessageController {
     Logger logger = LogManager.getLogger(MessageController.class);
     @Autowired
     ExampleClassForMethodAnnotation forMethodAnnotation;
+    @Autowired
+    MessageService messageService;
 
     @GetMapping("/mensajes/example")
-    public String getMensajesString() {
+    public String getMensajesString() throws ApiRestException {
+
         logger.info("GET Request recibido string");
 
         forMethodAnnotation.method1();
@@ -47,9 +51,11 @@ public class MessageController {
     public Mensaje getMensajeById(@PathVariable Long id) throws ApiRestException {
         logger.info("GET obtener mensaje por el id");
 
-        if(id == 0) {
+        if (id == 0) {
+            logger.info("GET obtener mensaje por el id");
             throw new ApiRestException("El identificador del mensaje debe ser mayor a 0");
         }
+
         var msjFiltered = dataMensajes().stream()
                 .filter(mensajes -> Objects.equals(mensajes.getId(), id));
         return msjFiltered.findFirst().orElse(new Mensaje(0L, "No existe el mensaje"));

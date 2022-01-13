@@ -11,12 +11,12 @@ public class AspectAfterExample {
 
     Logger logger = LogManager.getLogger(AspectAfterExample.class);
 
-//    @Pointcut("execution(* com.coderhouse.controller.MessageController.getMensajeById(..))")
-//    void alTerminarBusquedas() {}
-//
-//    @Pointcut("execution(* com.coderhouse.controller.*.*(..))")
-//    void alTerminarBusquedasAll() {}
-//
+    @Pointcut("execution(* com.coderhouse.controller.MessageController.getMensajeById(..))")
+    void alTerminarBusquedas() {}
+
+    @Pointcut("execution(* com.coderhouse.controller.*.*(..))")
+    void alTerminarBusquedasAll() {}
+
 //    @After("alTerminarBusquedasAll()")
 //    void afterAdviceMethodAll() {
 //        logger.info("Se ejecutó el after advice luego de la ejecución de cualquier método del paquete controller");
@@ -27,7 +27,7 @@ public class AspectAfterExample {
 //        logger.info("Se ejecutó el after advice luego de la ejecución del método con o sin excepcion");
 //    }
 //
-//    @AfterReturning("execution(* com.coderhouse.controller.MessageController.getMensajeById(..))")
+//    @AfterReturning("alTerminarBusquedas()")
 //    void afterRetuningAdviceMethod() {
 //        logger.info("Se ejecuto el after advice cuando no hay una excepción en la ejecución del método getMensajeById de la capa Controller");
 //    }
